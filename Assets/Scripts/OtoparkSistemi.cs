@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class OtoparkSistemi : MonoBehaviour
 {
-    int time = 2;
+    [SerializeField] private int time = 1; // kodumuzu hem gizli tutmak hem de unity üzerinden değiştirebilmek için ekledik.//
     
     void Start()
     {
+    
+    if (time <= 0)       //sıfır ve negatif sayıların girilmesi durumunda uyarı verecek şekilde ekledik.//
+    {
+        Debug.LogError("Geçersiz değer!");
+        return;
+    }
+
     switch (time)
+
     {
         case 1: 
         Debug.Log("Otoparkta kaldığınız süre: 1 saat");
@@ -33,8 +41,8 @@ public class OtoparkSistemi : MonoBehaviour
         Debug.Log("Ücretiniz 550 TL");
         break;
 
-        default:
-        Debug.Log("Otoparkta kaldığınız süre:" + time + "saat");
+        default:                                                 // beşten farklı yazılan tüm değerler için artık aynı ücrete tabi tutulacak.//
+        Debug.Log("Otoparkta kaldığınız süre: " + time + " saat");
         Debug.Log("Ücretiniz 550 TL");
         break;
     }
